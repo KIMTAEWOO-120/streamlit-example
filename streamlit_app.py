@@ -3,6 +3,12 @@ import matplotlib.pyplot as plt
 from scipy import signal
 import streamlit as st
 
+
+
+# 애플리케이션 제목
+st.title("주파수 응답")
+
+
 # 폐루프 전달함수의 분자와 분모 계수를 설정합니다.
 num = [100]
 den = [1, 5, 106]
