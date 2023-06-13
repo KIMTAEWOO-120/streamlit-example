@@ -135,5 +135,8 @@ t = np.linspace(0, 10, 1000)
 t, y = signal.step(sys, T=t)
 
 # Streamlit 애플리케이션을 실행합니다.
-st.title('Step Response')
+st.title('Step Response of G(s) = 100 / ((s+2)(s+3))')
 st.pyplot(plt.plot(t, y))
+st.xlabel('Time')
+st.ylabel('Response')
+st.grid(True)
