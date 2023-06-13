@@ -73,3 +73,41 @@ plt.tight_layout()
 st.title('Bode Plot')
 st.pyplot(fig)
 
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.signal import TransferFunction, lsim
+import streamlit as st
+
+# Transfer function coefficients
+num = [2]
+den = [1, 3, 2]
+
+# Define transfer function G(s)
+G = TransferFunction(num, den)
+
+# Time array
+t = np.linspace(0, 10, 500)
+
+# Create sinusoidal input
+u = np.sin(t)
+
+# Compute system response
+t, y, _ = lsim(G, u, t)
+
+# Plotting
+fig, ax = plt.subplots(figsize=(10, 6))
+
+# Input signal plot
+ax.plot(t, u, label='Input (sinusoidal)', color='blue')
+
+# Output signal plot
+ax.plot(t, y, label='Output', color='red')
+
+ax.set_title('Input & Output Over Time')
+ax.set_xlabel('Time')
+ax.set_ylabel('Amplitude')
+ax.grid()
+ax.legend()
+
+# Display the plot using Streamlit
+st.pyplot(fig)
