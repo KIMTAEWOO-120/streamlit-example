@@ -75,67 +75,24 @@ st.pyplot(fig)
 
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.signal import TransferFunction, lsim
-import streamlit as st
-
-# 애플리케이션 제목
-st.title("주파수 응답과 주파수전달함수 ")
-
-
-# Transfer function coefficients
-num = [2]
-den = [1, 3, 2]
-
-# Define transfer function G(s)
-G = TransferFunction(num, den)
-
-# Time array
-t = np.linspace(0, 10, 500)
-
-# Create sinusoidal input
-u = np.sin(t)
-
-# Compute system response
-t, y, _ = lsim(G, u, t)
-
-# Plotting
-fig, ax = plt.subplots(figsize=(10, 6))
-
-# Input signal plot
-ax.plot(t, u, label='Input (sinusoidal)', color='blue')
-
-# Output signal plot
-ax.plot(t, y, label='Output', color='red')
-
-ax.set_title('Input & Output Over Time')
-ax.set_xlabel('Time')
-ax.set_ylabel('Amplitude')
-ax.grid()
-ax.legend()
-
-# Display the plot using Streamlit
-st.pyplot(fig)
-
-
-import numpy as np
-import matplotlib.pyplot as plt
 from scipy import signal
 import streamlit as st
 
-# 전달함수의 분자와 분모 계수를 설정합니다.
+# 개루프 전달함수의 분자와 분모 계수를 설정합니다.
 num = [100]
-den = [1, 5, 6]  # (s+2)(s+3) = s^2 + 5s + 6
+den = [1, 5, 6] 
 
-# 전달함수 객체를 생성합니다.
+# 개루프 전달함수의 전달함수 객체를 생성합니다.
 sys = signal.TransferFunction(num, den)
 
-# 시간 범위를 설정합니다.
+# 응답 시간 범위를 설정합니다.
 t = np.linspace(0, 10, 1000)
 
 # unit step 입력에 대한 응답을 계산합니다.
 t, y = signal.step(sys, T=t)
 
 # 그래프를 그리는 함수
+def plot_step_response():
     fig, ax = plt.subplots()
     ax.plot(t, y)
     ax.set_xlabel('Time')
@@ -146,5 +103,6 @@ t, y = signal.step(sys, T=t)
 
 # Streamlit 앱 실행
 st.set_page_config(layout='wide')
+
 fig = plot_step_response()
 st.pyplot(fig)
