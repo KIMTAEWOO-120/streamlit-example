@@ -3,9 +3,8 @@ import streamlit as st
 # 애플리케이션 제목
 st.title("202021008 김태우")
 
-# 텍스트
-st.text("다음 전달함수 G(s)=100/(s+2)(s+3)일때  폐루프 전달함수를 구하고 unit step 입력의 응답곡선을 그리고, 주파수 응답을 보드선도로 그리시오. 이것을 자신의 학번 이름을 streamlit을 통해 Web에 배포 하시오.")
-
+# 페이지 제목
+st.header("다음 전달함수 G(s)=100/(s+2)(s+3)일때  폐루프 전달함수를 구하고 unit step 입력의 응답곡선을 그리고, 주파수 응답을 보드선도로 그리시오. 이것을 자신의 학번 이름을 streamlit을 통해 Web에 배포 하시오.")
 
 import numpy as np
 import matplotlib.pyplot as plt
