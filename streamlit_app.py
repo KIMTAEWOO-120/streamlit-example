@@ -136,7 +136,6 @@ t = np.linspace(0, 10, 1000)
 t, y = signal.step(sys, T=t)
 
 # 그래프를 그리는 함수
-def plot_step_response():
     fig, ax = plt.subplots()
     ax.plot(t, y)
     ax.set_xlabel('Time')
