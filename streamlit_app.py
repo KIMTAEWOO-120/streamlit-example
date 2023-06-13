@@ -12,8 +12,6 @@ from scipy import signal
 import streamlit as st
 
 
-
-
 # 애플리케이션 제목
 st.title("unit step 입력의 응답곡선")
 
@@ -71,4 +69,52 @@ plt.tight_layout()
 
 # Streamlit 앱을 생성합니다.
 st.title('Bode Plot')
+st.pyplot(fig)
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.signal import TransferFunction, lsim
+import streamlit as st
+
+def plot_input_output():
+    # Transfer function coefficients
+    num = [2]
+    den = [1, 3, 2]
+
+    # Define transfer function G(s)
+    G = TransferFunction(num, den)
+
+    # Time array
+    t = np.linspace(0, 10, 500)
+
+    # Create sinusoidal input
+    u = np.sin(t)
+
+    # Compute system response
+    t, y, _ = lsim(G, u, t)
+
+    # Plotting
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+    # Input signal plot
+    ax.plot(t, u, label='Input (sinusoidal)', color='blue')
+
+    # Output signal plot
+    ax.plot(t, y, label='Output', color='red')
+
+    ax.set_title('Input & Output Over Time')
+    ax.set_xlabel('Time')
+    ax.set_ylabel('Amplitude')
+    ax.grid()
+    ax.legend()
+
+    return fig
+
+# Run the Streamlit app
+st.set_page_config(layout='wide')
+
+# Plot input and output
+fig = plot_input_output()
+
+# Display the plot using Streamlit
 st.pyplot(fig)
