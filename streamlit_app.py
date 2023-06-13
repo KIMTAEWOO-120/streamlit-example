@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import signal
+import streamlit as st
 
 # 폐루프 전달함수의 분자와 분모 계수를 설정합니다.
 num = [100]
@@ -15,10 +16,6 @@ t = np.linspace(0, 10, 1000)
 # unit step 입력에 대한 응답을 계산합니다.
 t, y = signal.step(sys, T=t)
 
-# 그래프를 그립니다.
-plt.plot(t, y)
-plt.xlabel('Time')
-plt.ylabel('Response')
-plt.title('Step Response of L(s) = 100 / (s^2 + 5s + 106)')
-plt.grid(True)
-plt.show()
+# Streamlit 앱을 생성합니다.
+st.title('Step Response')
+st.pyplot(plt.plot(t, y))
