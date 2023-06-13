@@ -18,11 +18,12 @@ t, y = signal.step(sys, T=t)
 
 # Streamlit 앱을 생성합니다.
 st.title('Step Response')
-st.line_chart(y, use_container_width=True) import numpy as np
+st.line_chart(y, use_container_width=True) 
+
+import numpy as np
 import matplotlib.pyplot as plt
 from scipy import signal
 import streamlit as st
-
 
 
 # 애플리케이션 제목
