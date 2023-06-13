@@ -76,6 +76,10 @@ import matplotlib.pyplot as plt
 from scipy.signal import TransferFunction, lsim
 import streamlit as st
 
+# 애플리케이션 제목
+st.title("주파수 응답과 주파수 ")
+
+
 # Transfer function coefficients
 num = [2]
 den = [1, 3, 2]
