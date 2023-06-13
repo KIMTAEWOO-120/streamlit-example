@@ -77,7 +77,7 @@ from scipy.signal import TransferFunction, lsim
 import streamlit as st
 
 # 애플리케이션 제목
-st.title("주파수 응답과 주파수 ")
+st.title("주파수 응답과 주파수전달함수 ")
 
 
 # Transfer function coefficients
