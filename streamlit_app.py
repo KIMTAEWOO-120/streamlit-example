@@ -44,37 +44,6 @@ fig = plot_step_response()
 # Display the plot using Streamlit
 st.pyplot(fig)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import signal
