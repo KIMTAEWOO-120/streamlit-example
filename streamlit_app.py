@@ -7,6 +7,37 @@ st.title("202021008 김태우")
 st.header("다음 전달함수 G(s)=100/(s+2)(s+3)일때  폐루프 전달함수를 구하고 unit step 입력의 응답곡선을 그리고, 주파수 응답을 보드선도로 그리시오. 이것을 자신의 학번 이름을 streamlit을 통해 Web에 배포 하시오.")
 
 
+import streamlit as st
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import signal
+
+# 애플리케이션 제목
+st.title("개루프 전달함수의 unit step 입력의 응답곡선")
+
+
+# 전달함수의 분자와 분모 계수를 설정합니다.
+num = [100]
+den = [1, 5, 6]  # (s+2)(s+3) = s^2 + 5s + 6
+
+# 전달함수 객체를 생성합니다.
+sys = signal.TransferFunction(num, den)
+
+# 시간 범위를 설정합니다.
+t = np.linspace(0, 10, 1000)
+
+# unit step 입력에 대한 응답을 계산합니다.
+t, y = signal.step(sys, T=t)
+
+# Streamlit 애플리케이션을 실행합니다.
+st.title('Step Response of G(s) = 100 / ((s+2)(s+3))')
+fig, ax = plt.subplots()
+ax.plot(t, y)
+ax.set_xlabel('Time')
+ax.set_ylabel('Response')
+ax.set_title('Step Response of G(s) = 100 / ((s+2)(s+3))')
+ax.grid(True)
+st.pyplot(fig)
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -116,30 +147,3 @@ ax.legend()
 # Display the plot using Streamlit
 st.pyplot(fig)
 
-import streamlit as st
-import numpy as np
-import matplotlib.pyplot as plt
-from scipy import signal
-
-# 전달함수의 분자와 분모 계수를 설정합니다.
-num = [100]
-den = [1, 5, 6]  # (s+2)(s+3) = s^2 + 5s + 6
-
-# 전달함수 객체를 생성합니다.
-sys = signal.TransferFunction(num, den)
-
-# 시간 범위를 설정합니다.
-t = np.linspace(0, 10, 1000)
-
-# unit step 입력에 대한 응답을 계산합니다.
-t, y = signal.step(sys, T=t)
-
-# Streamlit 애플리케이션을 실행합니다.
-st.title('Step Response of G(s) = 100 / ((s+2)(s+3))')
-fig, ax = plt.subplots()
-ax.plot(t, y)
-ax.set_xlabel('Time')
-ax.set_ylabel('Response')
-ax.set_title('Step Response of G(s) = 100 / ((s+2)(s+3))')
-ax.grid(True)
-st.pyplot(fig)
